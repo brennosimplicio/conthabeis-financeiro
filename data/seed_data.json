@@ -1,0 +1,1220 @@
+{
+  "clientes": [
+    {
+      "nome": "Cyclus Bike",
+      "faturamento": 405.25,
+      "brenno": 80.0,
+      "josimar": 60.0,
+      "joice": 60.0,
+      "conthabeis": 205.25
+    },
+    {
+      "nome": "Vitor",
+      "faturamento": 250.0,
+      "brenno": 250.0,
+      "josimar": 0,
+      "joice": 0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "Solar",
+      "faturamento": 500.0,
+      "brenno": 500.0,
+      "josimar": 0,
+      "joice": 0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "César",
+      "faturamento": 500.0,
+      "brenno": 500.0,
+      "josimar": 0,
+      "joice": 0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "Kommu",
+      "faturamento": 100.0,
+      "brenno": 100.0,
+      "josimar": 0,
+      "joice": 0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "WRL",
+      "faturamento": 0.0,
+      "brenno": 0.0,
+      "josimar": 0,
+      "joice": 0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "Márcio",
+      "faturamento": 1200.0,
+      "brenno": 1200.0,
+      "josimar": 0,
+      "joice": 0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "Taioba",
+      "faturamento": 400.0,
+      "brenno": 0,
+      "josimar": 400.0,
+      "joice": 0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "Raisa",
+      "faturamento": 350.0,
+      "brenno": 0,
+      "josimar": 0,
+      "joice": 350.0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "Poli",
+      "faturamento": 405.25,
+      "brenno": 100.0,
+      "josimar": 100.0,
+      "joice": 100.0,
+      "conthabeis": 105.25
+    },
+    {
+      "nome": "Edjania",
+      "faturamento": 500.0,
+      "brenno": 125.0,
+      "josimar": 125.0,
+      "joice": 125.0,
+      "conthabeis": 125.0
+    },
+    {
+      "nome": "Casa Linda",
+      "faturamento": 400.0,
+      "brenno": 0,
+      "josimar": 0,
+      "joice": 400.0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "MVM",
+      "faturamento": 1000.0,
+      "brenno": 250.0,
+      "josimar": 250.0,
+      "joice": 250.0,
+      "conthabeis": 250.0
+    },
+    {
+      "nome": "Tereza",
+      "faturamento": 300.0,
+      "brenno": 75.0,
+      "josimar": 75.0,
+      "joice": 75.0,
+      "conthabeis": 75.0
+    },
+    {
+      "nome": "MFAS",
+      "faturamento": 300.0,
+      "brenno": 80.0,
+      "josimar": 80.0,
+      "joice": 80.0,
+      "conthabeis": 60.0
+    },
+    {
+      "nome": "Suporte",
+      "faturamento": 1000.0,
+      "brenno": 0,
+      "josimar": 0,
+      "joice": 0,
+      "conthabeis": 1000.0
+    },
+    {
+      "nome": "Classe A",
+      "faturamento": 0.0,
+      "brenno": 0,
+      "josimar": 0.0,
+      "joice": 0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "Marcelo",
+      "faturamento": 920.0,
+      "brenno": 250.0,
+      "josimar": 250.0,
+      "joice": 250.0,
+      "conthabeis": 170.0
+    },
+    {
+      "nome": "J.O.V",
+      "faturamento": 1518.0,
+      "brenno": 350.0,
+      "josimar": 350.0,
+      "joice": 350.0,
+      "conthabeis": 468.0
+    },
+    {
+      "nome": "Instituto Reviravida",
+      "faturamento": 423.6,
+      "brenno": 75.0,
+      "josimar": 75.0,
+      "joice": 75.0,
+      "conthabeis": 198.60000000000002
+    },
+    {
+      "nome": "Valter",
+      "faturamento": 423.6,
+      "brenno": 75.0,
+      "josimar": 75.0,
+      "joice": 75.0,
+      "conthabeis": 198.60000000000002
+    },
+    {
+      "nome": "OSC Unidas pelo Bem",
+      "faturamento": 423.6,
+      "brenno": 75.0,
+      "josimar": 75.0,
+      "joice": 75.0,
+      "conthabeis": 198.60000000000002
+    },
+    {
+      "nome": "Dalva",
+      "faturamento": 500.0,
+      "brenno": 130.0,
+      "josimar": 130.0,
+      "joice": 130.0,
+      "conthabeis": 110.0
+    },
+    {
+      "nome": "Rodrigo - Men Style",
+      "faturamento": 500.0,
+      "brenno": 125.0,
+      "josimar": 125.0,
+      "joice": 125.0,
+      "conthabeis": 125.0
+    },
+    {
+      "nome": "CRS e Tamara",
+      "faturamento": 450.0,
+      "brenno": 0,
+      "josimar": 450.0,
+      "joice": 0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "Gente Gestão",
+      "faturamento": 300.0,
+      "brenno": 75.0,
+      "josimar": 75.0,
+      "joice": 75.0,
+      "conthabeis": 75.0
+    },
+    {
+      "nome": "Rodolfo Perfumista",
+      "faturamento": 500.0,
+      "brenno": 125.0,
+      "josimar": 125.0,
+      "joice": 125.0,
+      "conthabeis": 125.0
+    },
+    {
+      "nome": "Dieselmaq",
+      "faturamento": 1621.0,
+      "brenno": 350.0,
+      "josimar": 350.0,
+      "joice": 350.0,
+      "conthabeis": 571.0
+    },
+    {
+      "nome": "Ronei",
+      "faturamento": 250.0,
+      "brenno": 80.0,
+      "josimar": 80.0,
+      "joice": 80.0,
+      "conthabeis": 10.0
+    },
+    {
+      "nome": "Somos Eng e Arq",
+      "faturamento": 600.0,
+      "brenno": 150.0,
+      "josimar": 150.0,
+      "joice": 150.0,
+      "conthabeis": 150.0
+    },
+    {
+      "nome": "Cardume PI",
+      "faturamento": 325.0,
+      "brenno": 100.0,
+      "josimar": 100.0,
+      "joice": 100.0,
+      "conthabeis": 25.0
+    },
+    {
+      "nome": "Instituto Juventude Criativa",
+      "faturamento": 400.0,
+      "brenno": 100.0,
+      "josimar": 100.0,
+      "joice": 100.0,
+      "conthabeis": 100.0
+    },
+    {
+      "nome": "Coop Reciclando Vidas",
+      "faturamento": 400.0,
+      "brenno": 100.0,
+      "josimar": 100.0,
+      "joice": 100.0,
+      "conthabeis": 100.0
+    },
+    {
+      "nome": "Coop Rede",
+      "faturamento": 500.0,
+      "brenno": 125.0,
+      "josimar": 125.0,
+      "joice": 125.0,
+      "conthabeis": 125.0
+    },
+    {
+      "nome": "Coop Curcurana",
+      "faturamento": 500.0,
+      "brenno": 125.0,
+      "josimar": 125.0,
+      "joice": 125.0,
+      "conthabeis": 125.0
+    },
+    {
+      "nome": "Coop Maria da Penha",
+      "faturamento": 1000.0,
+      "brenno": 250.0,
+      "josimar": 250.0,
+      "joice": 250.0,
+      "conthabeis": 250.0
+    },
+    {
+      "nome": "Coop CAD Recicla",
+      "faturamento": 500.0,
+      "brenno": 125.0,
+      "josimar": 125.0,
+      "joice": 125.0,
+      "conthabeis": 125.0
+    },
+    {
+      "nome": "Coop Coopagres",
+      "faturamento": 500.0,
+      "brenno": 125.0,
+      "josimar": 125.0,
+      "joice": 125.0,
+      "conthabeis": 125.0
+    },
+    {
+      "nome": "Coop Sitio Carpina",
+      "faturamento": 500.0,
+      "brenno": 125.0,
+      "josimar": 125.0,
+      "joice": 125.0,
+      "conthabeis": 125.0
+    },
+    {
+      "nome": "Coop Vila Rica",
+      "faturamento": 1000.0,
+      "brenno": 250.0,
+      "josimar": 250.0,
+      "joice": 250.0,
+      "conthabeis": 250.0
+    },
+    {
+      "nome": "LOOKATTU",
+      "faturamento": 0.0,
+      "brenno": 0,
+      "josimar": 0,
+      "joice": 0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "IR Inovação",
+      "faturamento": 0.0,
+      "brenno": 0,
+      "josimar": 0,
+      "joice": 0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "Integra",
+      "faturamento": 450.0,
+      "brenno": 100.0,
+      "josimar": 100.0,
+      "joice": 100.0,
+      "conthabeis": 150.0
+    },
+    {
+      "nome": "IMMER Engenharia",
+      "faturamento": 500.0,
+      "brenno": 150.0,
+      "josimar": 150.0,
+      "joice": 150.0,
+      "conthabeis": 50.0
+    },
+    {
+      "nome": "IMMER Obras e Reformas",
+      "faturamento": 250.0,
+      "brenno": 50.0,
+      "josimar": 50.0,
+      "joice": 50.0,
+      "conthabeis": 100.0
+    },
+    {
+      "nome": "Mario Carvalho Marketing",
+      "faturamento": 420.0,
+      "brenno": 110.0,
+      "josimar": 110.0,
+      "joice": 110.0,
+      "conthabeis": 90.0
+    },
+    {
+      "nome": "Eddyfumado",
+      "faturamento": 600.0,
+      "brenno": 150.0,
+      "josimar": 150.0,
+      "joice": 150.0,
+      "conthabeis": 150.0
+    },
+    {
+      "nome": "Angela Maysa Neuro",
+      "faturamento": 360.0,
+      "brenno": 100.0,
+      "josimar": 100.0,
+      "joice": 100.0,
+      "conthabeis": 60.0
+    },
+    {
+      "nome": "Carvalho Arquitetura",
+      "faturamento": 150.0,
+      "brenno": 0,
+      "josimar": 0,
+      "joice": 0,
+      "conthabeis": 150.0
+    },
+    {
+      "nome": "Germano",
+      "faturamento": 200.0,
+      "brenno": 50.0,
+      "josimar": 50.0,
+      "joice": 50.0,
+      "conthabeis": 50.0
+    },
+    {
+      "nome": "Gabriel Psicologo",
+      "faturamento": 0.0,
+      "brenno": 0.0,
+      "josimar": 0.0,
+      "joice": 0.0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "Daymed",
+      "faturamento": 0.0,
+      "brenno": 0,
+      "josimar": 0,
+      "joice": 0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "Daymed Vendas",
+      "faturamento": 0.0,
+      "brenno": 0,
+      "josimar": 0,
+      "joice": 0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "Decor Music",
+      "faturamento": 350.0,
+      "brenno": 80.0,
+      "josimar": 80.0,
+      "joice": 80.0,
+      "conthabeis": 110.0
+    },
+    {
+      "nome": "Gulabox",
+      "faturamento": 120.0,
+      "brenno": 40.0,
+      "josimar": 40.0,
+      "joice": 40.0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "Metodo GEM",
+      "faturamento": 0.0,
+      "brenno": 0,
+      "josimar": 0,
+      "joice": 0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "Allana Barbearia",
+      "faturamento": 250.0,
+      "brenno": 70.0,
+      "josimar": 70.0,
+      "joice": 70.0,
+      "conthabeis": 40.0
+    },
+    {
+      "nome": "RN Terceirização",
+      "faturamento": 500.0,
+      "brenno": 125.0,
+      "josimar": 125.0,
+      "joice": 125.0,
+      "conthabeis": 125.0
+    },
+    {
+      "nome": "MFB Carvalho Engenharia",
+      "faturamento": 325.0,
+      "brenno": 80.0,
+      "josimar": 80.0,
+      "joice": 80.0,
+      "conthabeis": 85.0
+    },
+    {
+      "nome": "J C Assessoria",
+      "faturamento": 325.0,
+      "brenno": 75.0,
+      "josimar": 75.0,
+      "joice": 75.0,
+      "conthabeis": 100.0
+    },
+    {
+      "nome": "AMAR",
+      "faturamento": 350.0,
+      "brenno": 90.0,
+      "josimar": 90.0,
+      "joice": 90.0,
+      "conthabeis": 80.0
+    },
+    {
+      "nome": "Agencia Nomade",
+      "faturamento": 250.0,
+      "brenno": 75.0,
+      "josimar": 75.0,
+      "joice": 75.0,
+      "conthabeis": 25.0
+    },
+    {
+      "nome": "VidasLab",
+      "faturamento": 300.0,
+      "brenno": 80.0,
+      "josimar": 80.0,
+      "joice": 80.0,
+      "conthabeis": 60.0
+    },
+    {
+      "nome": "Quarteto da Arriação",
+      "faturamento": 400.0,
+      "brenno": 400.0,
+      "josimar": 0.0,
+      "joice": 0.0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "Josefa – Bar do Branco",
+      "faturamento": 350.0,
+      "brenno": 100.0,
+      "josimar": 100.0,
+      "joice": 100.0,
+      "conthabeis": 50.0
+    },
+    {
+      "nome": "Galvão Flores",
+      "faturamento": 1800.0,
+      "brenno": 450.0,
+      "josimar": 450.0,
+      "joice": 450.0,
+      "conthabeis": 450.0
+    },
+    {
+      "nome": "Ju & Gi Bessie Setubal",
+      "faturamento": 395.0,
+      "brenno": 100.0,
+      "josimar": 100.0,
+      "joice": 100.0,
+      "conthabeis": 95.0
+    },
+    {
+      "nome": "Patricia Lico Fisio",
+      "faturamento": 353.0,
+      "brenno": 80.0,
+      "josimar": 80.0,
+      "joice": 80.0,
+      "conthabeis": 113.0
+    },
+    {
+      "nome": "3MD TI",
+      "faturamento": 494.2,
+      "brenno": 100.0,
+      "josimar": 100.0,
+      "joice": 100.0,
+      "conthabeis": 194.2
+    },
+    {
+      "nome": "Danyelle Costa",
+      "faturamento": 324.20000000000005,
+      "brenno": 70.0,
+      "josimar": 70.0,
+      "joice": 70.0,
+      "conthabeis": 114.20000000000005
+    },
+    {
+      "nome": "Wagner Felipe",
+      "faturamento": 500.0,
+      "brenno": 0,
+      "josimar": 0,
+      "joice": 0,
+      "conthabeis": 500.0
+    },
+    {
+      "nome": "Athenas Glow",
+      "faturamento": 0.0,
+      "brenno": 0.0,
+      "josimar": 0.0,
+      "joice": 0.0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "JOVTEC",
+      "faturamento": 500.0,
+      "brenno": 150.0,
+      "josimar": 150.0,
+      "joice": 150.0,
+      "conthabeis": 50.0
+    },
+    {
+      "nome": "Joás - Caio Iuri, Jaguar",
+      "faturamento": 0.0,
+      "brenno": 0.0,
+      "josimar": 0.0,
+      "joice": 0.0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "Oro - Andre Luis",
+      "faturamento": 534.9,
+      "brenno": 125.0,
+      "josimar": 125.0,
+      "joice": 125.0,
+      "conthabeis": 159.89999999999998
+    },
+    {
+      "nome": "JRX - Bar do Joddy",
+      "faturamento": 0.0,
+      "brenno": 0.0,
+      "josimar": 0.0,
+      "joice": 0.0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "Rafael Bernardo Arquitetura",
+      "faturamento": 353.0,
+      "brenno": 80.0,
+      "josimar": 80.0,
+      "joice": 80.0,
+      "conthabeis": 113.0
+    },
+    {
+      "nome": "Carina Andrade Imóveis",
+      "faturamento": 353.0,
+      "brenno": 80.0,
+      "josimar": 80.0,
+      "joice": 80.0,
+      "conthabeis": 113.0
+    },
+    {
+      "nome": "Cuidater",
+      "faturamento": 385.0,
+      "brenno": 90.0,
+      "josimar": 90.0,
+      "joice": 90.0,
+      "conthabeis": 115.0
+    },
+    {
+      "nome": "Rogerio Construtora",
+      "faturamento": 200.0,
+      "brenno": 50.0,
+      "josimar": 50.0,
+      "joice": 50.0,
+      "conthabeis": 50.0
+    },
+    {
+      "nome": "VP Construções",
+      "faturamento": 400.0,
+      "brenno": 100.0,
+      "josimar": 100.0,
+      "joice": 100.0,
+      "conthabeis": 100.0
+    },
+    {
+      "nome": "Filgueira Cabral Engenharia",
+      "faturamento": 353.0,
+      "brenno": 80.0,
+      "josimar": 80.0,
+      "joice": 80.0,
+      "conthabeis": 113.0
+    },
+    {
+      "nome": "Associação Amarez",
+      "faturamento": 620.0,
+      "brenno": 155.0,
+      "josimar": 155.0,
+      "joice": 155.0,
+      "conthabeis": 155.0
+    },
+    {
+      "nome": "Associação Mães e Anjos Azuis",
+      "faturamento": 379.5,
+      "brenno": 80.0,
+      "josimar": 80.0,
+      "joice": 80.0,
+      "conthabeis": 139.5
+    },
+    {
+      "nome": "Dourado Serviços",
+      "faturamento": 380.0,
+      "brenno": 95.0,
+      "josimar": 95.0,
+      "joice": 95.0,
+      "conthabeis": 95.0
+    },
+    {
+      "nome": "Marçal Neto - Virtus Men",
+      "faturamento": 360.0,
+      "brenno": 90.0,
+      "josimar": 90.0,
+      "joice": 90.0,
+      "conthabeis": 90.0
+    },
+    {
+      "nome": "UHOMED Engenharia",
+      "faturamento": 437.5,
+      "brenno": 100.0,
+      "josimar": 100.0,
+      "joice": 100.0,
+      "conthabeis": 137.5
+    },
+    {
+      "nome": "Larissa Estima",
+      "faturamento": 303.6,
+      "brenno": 75.0,
+      "josimar": 75.0,
+      "joice": 75.0,
+      "conthabeis": 78.60000000000002
+    },
+    {
+      "nome": "Sergio Dourado",
+      "faturamento": 455.4,
+      "brenno": 100.0,
+      "josimar": 100.0,
+      "joice": 100.0,
+      "conthabeis": 155.39999999999998
+    },
+    {
+      "nome": "Francisco Custodio",
+      "faturamento": 324.2,
+      "brenno": 65.0,
+      "josimar": 65.0,
+      "joice": 65.0,
+      "conthabeis": 129.2
+    },
+    {
+      "nome": "B&V Bessie Asa Sul - BSB",
+      "faturamento": 759.0,
+      "brenno": 120.0,
+      "josimar": 120.0,
+      "joice": 120.0,
+      "conthabeis": 399.0
+    },
+    {
+      "nome": "Amanda Bizu",
+      "faturamento": 379.5,
+      "brenno": 90.0,
+      "josimar": 90.0,
+      "joice": 90.0,
+      "conthabeis": 109.5
+    },
+    {
+      "nome": "AnexoD",
+      "faturamento": 400.0,
+      "brenno": 100.0,
+      "josimar": 100.0,
+      "joice": 100.0,
+      "conthabeis": 100.0
+    },
+    {
+      "nome": "Arkad",
+      "faturamento": 200.0,
+      "brenno": 50.0,
+      "josimar": 50.0,
+      "joice": 50.0,
+      "conthabeis": 50.0
+    },
+    {
+      "nome": "Multcomercio",
+      "faturamento": 250.0,
+      "brenno": 75.0,
+      "josimar": 75.0,
+      "joice": 75.0,
+      "conthabeis": 25.0
+    },
+    {
+      "nome": "PetSaude+",
+      "faturamento": 340.0,
+      "brenno": 80.0,
+      "josimar": 80.0,
+      "joice": 80.0,
+      "conthabeis": 100.0
+    },
+    {
+      "nome": "DP e DA Gestão Ambiental",
+      "faturamento": 2300.0,
+      "brenno": 500.0,
+      "josimar": 500.0,
+      "joice": 500.0,
+      "conthabeis": 800.0
+    },
+    {
+      "nome": "Fama",
+      "faturamento": 300.0,
+      "brenno": 75.0,
+      "josimar": 75.0,
+      "joice": 75.0,
+      "conthabeis": 75.0
+    },
+    {
+      "nome": "Carlos Vitor Consultoria",
+      "faturamento": 150.0,
+      "brenno": 150.0,
+      "josimar": 0.0,
+      "joice": 0.0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "Pureleve",
+      "faturamento": 759.0,
+      "brenno": 150.0,
+      "josimar": 150.0,
+      "joice": 150.0,
+      "conthabeis": 309.0
+    },
+    {
+      "nome": "Lalis Lanches Lesen",
+      "faturamento": 300.0,
+      "brenno": 80.0,
+      "josimar": 80.0,
+      "joice": 80.0,
+      "conthabeis": 60.0
+    },
+    {
+      "nome": "Ecoliv",
+      "faturamento": 300.0,
+      "brenno": 80.0,
+      "josimar": 80.0,
+      "joice": 80.0,
+      "conthabeis": 60.0
+    },
+    {
+      "nome": "A Pires Engenharia",
+      "faturamento": 0.0,
+      "brenno": 0.0,
+      "josimar": 0.0,
+      "joice": 0.0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "JS INOVAXTI",
+      "faturamento": 325.0,
+      "brenno": 75.0,
+      "josimar": 75.0,
+      "joice": 75.0,
+      "conthabeis": 100.0
+    },
+    {
+      "nome": "Loteamento Alto da Bela Vista",
+      "faturamento": 150.0,
+      "brenno": 40.0,
+      "josimar": 40.0,
+      "joice": 40.0,
+      "conthabeis": 30.0
+    },
+    {
+      "nome": "Bom Também",
+      "faturamento": 425.0,
+      "brenno": 80.0,
+      "josimar": 80.0,
+      "joice": 80.0,
+      "conthabeis": 185.0
+    },
+    {
+      "nome": "Erica Dantas",
+      "faturamento": 400.0,
+      "brenno": 80.0,
+      "josimar": 60.0,
+      "joice": 60.0,
+      "conthabeis": 200.0
+    },
+    {
+      "nome": "Marina Pereira",
+      "faturamento": 379.5,
+      "brenno": 90.0,
+      "josimar": 90.0,
+      "joice": 90.0,
+      "conthabeis": 109.5
+    },
+    {
+      "nome": "Carlos Henrique",
+      "faturamento": 125.0,
+      "brenno": 125.0,
+      "josimar": 0,
+      "joice": 0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "Lillian Pollyana",
+      "faturamento": 50.0,
+      "brenno": 50.0,
+      "josimar": 0,
+      "joice": 0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "RF Construções",
+      "faturamento": 400.0,
+      "brenno": 80.0,
+      "josimar": 60.0,
+      "joice": 60.0,
+      "conthabeis": 200.0
+    },
+    {
+      "nome": "Julia Alice Cerqueira",
+      "faturamento": 125.0,
+      "brenno": 125.0,
+      "josimar": 0,
+      "joice": 0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "ERCS Construções",
+      "faturamento": 200.0,
+      "brenno": 35.0,
+      "josimar": 50.0,
+      "joice": 35.0,
+      "conthabeis": 80.0
+    },
+    {
+      "nome": "Kelle Souza",
+      "faturamento": 100.0,
+      "brenno": 100.0,
+      "josimar": 0,
+      "joice": 0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "Leticia Souza",
+      "faturamento": 324.2,
+      "brenno": 65.0,
+      "josimar": 50.0,
+      "joice": 50.0,
+      "conthabeis": 159.2
+    },
+    {
+      "nome": "Marcos Rosa",
+      "faturamento": 125.0,
+      "brenno": 125.0,
+      "josimar": 0,
+      "joice": 0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "Gustavo Sousa",
+      "faturamento": 125.0,
+      "brenno": 125.0,
+      "josimar": 0.0,
+      "joice": 0.0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "Sonia Martins",
+      "faturamento": 379.5,
+      "brenno": 90.0,
+      "josimar": 90.0,
+      "joice": 90.0,
+      "conthabeis": 109.5
+    },
+    {
+      "nome": "Terra Agro Construções",
+      "faturamento": 379.5,
+      "brenno": 75.0,
+      "josimar": 55.0,
+      "joice": 55.0,
+      "conthabeis": 194.5
+    },
+    {
+      "nome": "Rauanny Sant'Anna",
+      "faturamento": 379.5,
+      "brenno": 90.0,
+      "josimar": 90.0,
+      "joice": 90.0,
+      "conthabeis": 109.5
+    },
+    {
+      "nome": "Sandra Magalhães",
+      "faturamento": 125.0,
+      "brenno": 125.0,
+      "josimar": 0.0,
+      "joice": 0.0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "Byanca Azevedo",
+      "faturamento": 125.0,
+      "brenno": 125.0,
+      "josimar": 0.0,
+      "joice": 0.0,
+      "conthabeis": 0.0
+    },
+    {
+      "nome": "Cooperativa Recicla Torre",
+      "faturamento": 729.45,
+      "brenno": 145.0,
+      "josimar": 110.0,
+      "joice": 110.0,
+      "conthabeis": 364.45000000000005
+    },
+    {
+      "nome": "Sá Moraes Engenharia",
+      "faturamento": 1934.4,
+      "brenno": 386.0,
+      "josimar": 290.0,
+      "joice": 290.0,
+      "conthabeis": 968.4000000000001
+    },
+    {
+      "nome": "Moms Clothing",
+      "faturamento": 250.0,
+      "brenno": 50.0,
+      "josimar": 40.0,
+      "joice": 40.0,
+      "conthabeis": 120.0
+    },
+    {
+      "nome": "Projetus Arquitetura",
+      "faturamento": 324.2,
+      "brenno": 65.0,
+      "josimar": 50.0,
+      "joice": 50.0,
+      "conthabeis": 159.2
+    },
+    {
+      "nome": "NXS Regularização",
+      "faturamento": 379.5,
+      "brenno": 75.0,
+      "josimar": 60.0,
+      "joice": 60.0,
+      "conthabeis": 184.5
+    },
+    {
+      "nome": "Max Vending",
+      "faturamento": 405.25,
+      "brenno": 80.0,
+      "josimar": 80.0,
+      "joice": 80.0,
+      "conthabeis": 165.25
+    },
+    {
+      "nome": "Mariana Seabra",
+      "faturamento": 0.0,
+      "brenno": 0,
+      "josimar": 0,
+      "joice": 0,
+      "conthabeis": 0
+    },
+    {
+      "nome": "Douglas Santana",
+      "faturamento": 405.25,
+      "brenno": 80.0,
+      "josimar": 60.0,
+      "joice": 60.0,
+      "conthabeis": 205.25
+    },
+    {
+      "nome": "Wanessa Bezerra",
+      "faturamento": 324.2,
+      "brenno": 65.0,
+      "josimar": 50.0,
+      "joice": 50.0,
+      "conthabeis": 159.2
+    },
+    {
+      "nome": "H Carvalho Engenharia",
+      "faturamento": 648.4,
+      "brenno": 100.0,
+      "josimar": 130.0,
+      "joice": 100.0,
+      "conthabeis": 318.4
+    },
+    {
+      "nome": "Sergio Pena",
+      "faturamento": 200.0,
+      "brenno": 35.0,
+      "josimar": 50.0,
+      "joice": 35.0,
+      "conthabeis": 80.0
+    },
+    {
+      "nome": "FOX Serviços",
+      "faturamento": 405.25,
+      "brenno": 80.0,
+      "josimar": 60.0,
+      "joice": 60.0,
+      "conthabeis": 205.25
+    },
+    {
+      "nome": "Talitha Malta",
+      "faturamento": 260.0,
+      "brenno": 50.0,
+      "josimar": 50.0,
+      "joice": 50.0,
+      "conthabeis": 110.0
+    },
+    {
+      "nome": "JE Ferragens",
+      "faturamento": 360.0,
+      "brenno": 90.0,
+      "josimar": 90.0,
+      "joice": 90.0,
+      "conthabeis": 90.0
+    },
+    {
+      "nome": "522.5",
+      "faturamento": 0.0,
+      "brenno": 0,
+      "josimar": 0,
+      "joice": 0,
+      "conthabeis": 0
+    },
+    {
+      "nome": "400",
+      "faturamento": 0.0,
+      "brenno": 0,
+      "josimar": -0.21639564916875842,
+      "joice": 1.022957867583835,
+      "conthabeis": 0
+    },
+    {
+      "nome": "40.37214190093708",
+      "faturamento": 0.0,
+      "brenno": 450.0,
+      "josimar": 0,
+      "joice": -0.02295786758383491,
+      "conthabeis": 0
+    },
+    {
+      "nome": "1709",
+      "faturamento": 0.0,
+      "brenno": 0,
+      "josimar": 0,
+      "joice": 0.21153916111899304,
+      "conthabeis": 0
+    },
+    {
+      "nome": "2154.08",
+      "faturamento": 0.0,
+      "brenno": 0,
+      "josimar": 0,
+      "joice": 0,
+      "conthabeis": 0
+    },
+    {
+      "nome": "63.63",
+      "faturamento": 0.0,
+      "brenno": 53784.0,
+      "josimar": 0,
+      "joice": 4500.0,
+      "conthabeis": 0
+    },
+    {
+      "nome": "330",
+      "faturamento": 0.0,
+      "brenno": 0,
+      "josimar": 0,
+      "joice": 0,
+      "conthabeis": 0
+    }
+  ],
+  "despesas": [
+    {
+      "nome": "Aluguel Sala",
+      "categoria": "Funcionamento",
+      "valor": 1200.0
+    },
+    {
+      "nome": "Alterdata",
+      "categoria": "Software",
+      "valor": 1500.0
+    },
+    {
+      "nome": "Hostgator",
+      "categoria": "Software",
+      "valor": 70.0
+    },
+    {
+      "nome": "Salario Jadelma",
+      "categoria": "Pessoal",
+      "valor": 2500.0
+    },
+    {
+      "nome": "Auxilio Alimentação Jadelma",
+      "categoria": "Pessoal",
+      "valor": 500.0
+    },
+    {
+      "nome": "Auxilio Transporte Jadelma",
+      "categoria": "Pessoal",
+      "valor": 300.0
+    },
+    {
+      "nome": "Salario Mayara",
+      "categoria": "Pessoal",
+      "valor": 2500.0
+    },
+    {
+      "nome": "Auxilio Alimentação Mayara",
+      "categoria": "Pessoal",
+      "valor": 500.0
+    },
+    {
+      "nome": "Auxilio Transporte Mayara",
+      "categoria": "Pessoal",
+      "valor": 300.0
+    },
+    {
+      "nome": "Bolsa Jehnny",
+      "categoria": "Pessoal",
+      "valor": 1000.0
+    },
+    {
+      "nome": "Impostos Jadelma",
+      "categoria": "Pessoal",
+      "valor": 650.0
+    },
+    {
+      "nome": "Impostos Mayara",
+      "categoria": "Pessoal",
+      "valor": 650.0
+    },
+    {
+      "nome": "Wave",
+      "categoria": "Software",
+      "valor": 350.0
+    },
+    {
+      "nome": "Mister Contador",
+      "categoria": "Software",
+      "valor": 500.0
+    }
+  ]
+}
