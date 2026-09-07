@@ -2,7 +2,11 @@ version: '3.8'
 
 services:
   app:
-    build: .
+    build:
+      context: .
+      args:
+        NEXT_PUBLIC_SUPABASE_URL: https://eimerlltnyoymshivbix.supabase.co
+        NEXT_PUBLIC_SUPABASE_ANON_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVpbWVybGx0bnlveW1zaGl2Yml4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg3NDIyMTUsImV4cCI6MjEwNDMxODIxNX0.MJxcUXsCgKXwIYBt0g65FniHUEnpYxGDOkbFoL0CsIM
     container_name: conthabeis-financeiro
     ports:
       - "3000:3000"
