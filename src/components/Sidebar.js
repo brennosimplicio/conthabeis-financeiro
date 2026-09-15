@@ -12,7 +12,8 @@ import {
   Menu,
   X,
   Wallet,
-  FileText
+  FileText,
+  LogOut
 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -51,7 +52,7 @@ export default function Sidebar() {
           </button>
         </div>
         
-        <nav className="sidebar-nav">
+        <nav className="sidebar-nav" style={{ flexGrow: 1 }}>
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = pathname === item.href;
@@ -68,6 +69,21 @@ export default function Sidebar() {
             );
           })}
         </nav>
+        
+        <div style={{ padding: '1rem', borderTop: '1px solid rgba(0,0,0,0.05)' }}>
+          <button 
+            className="sidebar-item" 
+            style={{ width: '100%', background: 'transparent', border: 'none', cursor: 'pointer' }}
+            onClick={async () => {
+              const { getDb } = await import('@/lib/db');
+              const supabase = getDb();
+              await supabase.auth.signOut();
+            }}
+          >
+            <LogOut size={20} />
+            <span>Sair</span>
+          </button>
+        </div>
       </div>
     </>
   );

@@ -2,12 +2,14 @@
 import { useState, useEffect, useCallback } from 'react';
 import MonthPicker from '@/components/MonthPicker';
 import StatCard from '@/components/StatCard';
-import { DollarSign, TrendingUp, Clock, BarChart3, Search } from 'lucide-react';
+import { DollarSign, TrendingUp, Clock, BarChart3, Search, Printer } from 'lucide-react';
 import { useToast } from '@/components/Toast';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 export default function DashboardPage() {
   const [date, setDate] = useState({ ano: new Date().getFullYear(), mes: new Date().getMonth() + 1 });
   const [data, setData] = useState(null);
+  const [comparativo, setComparativo] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [filterStatus, setFilterStatus] = useState('todos');
@@ -16,29 +18,14 @@ export default function DashboardPage() {
   const fetchData = useCallback(async () => {
     setLoading(true);
     try {
-      // Mock data for dashboard to show something since API might not exist yet
       const res = await fetch(`/api/dashboard?ano=${date.ano}&mes=${date.mes}`).catch(() => null);
       if (res && res.ok) {
-        const json = await res.json();
-        setData(json);
-      } else {
-        // Fallback mock data
-        setData({
-          faturamento_total: 50000,
-          total_recebido: 35000,
-          total_a_receber: 15000,
-          por_socio: [
-            { nome: 'Sócio 1', recebido: 10000, pendente: 5000 },
-            { nome: 'Sócio 2', recebido: 15000, pendente: 2000 },
-            { nome: 'Sócio 3', recebido: 10000, pendente: 8000 }
-          ],
-          conthabeis: { receita: 15000, despesas_pagas: 2000, despesas_a_pagar: 1000, resultado: 12000 },
-          clientes_status: [
-            { nome: 'Cliente A', faturamento: 10000, recebido: 10000, pendente: 0, status: 'recebido' },
-            { nome: 'Cliente B', faturamento: 20000, recebido: 10000, pendente: 10000, status: 'parcial' },
-            { nome: 'Cliente C', faturamento: 20000, recebido: 0, pendente: 20000, status: 'pendente' },
-          ]
-        });
+        setData(await res.json());
+      }
+      
+      const resComp = await fetch(`/api/dashboard/comparativo`).catch(() => null);
+      if (resComp && resComp.ok) {
+        setComparativo(await resComp.json());
       }
     } catch (e) {
       showToast('Erro ao carregar dashboard', 'error');
@@ -60,7 +47,12 @@ export default function DashboardPage() {
 
   return (
     <div>
-      <MonthPicker onChange={(ano, mes) => setDate({ ano, mes })} />
+      <div className="flex-between no-print" style={{ marginBottom: '1rem' }}>
+        <MonthPicker ano={date.ano} mes={date.mes} onChange={(ano, mes) => setDate({ ano, mes })} />
+        <button className="btn btn-secondary" onClick={() => window.print()}>
+          <Printer size={18} /> Exportar PDF
+        </button>
+      </div>
 
       <div className="grid-4" style={{ marginBottom: '2rem' }}>
         <StatCard title="Faturamento Total" value={formatCurrency(data.faturamento_total)} icon={DollarSign} color="blue" />
@@ -68,6 +60,26 @@ export default function DashboardPage() {
         <StatCard title="Total a Receber" value={formatCurrency(data.total_a_receber)} icon={Clock} color="amber" />
         <StatCard title="Resultado ContHabeis" value={formatCurrency(data.conthabeis?.resultado)} icon={BarChart3} color={(data.conthabeis?.resultado || 0) >= 0 ? 'green' : 'red'} />
       </div>
+
+      {comparativo.length > 0 && (
+        <div className="card" style={{ marginBottom: '2rem' }}>
+          <h3 style={{ marginBottom: '1.5rem' }}>Evolução Mensal (Últimos 12 meses)</h3>
+          <div style={{ width: '100%', height: 350 }}>
+            <ResponsiveContainer>
+              <BarChart data={comparativo} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
+                <XAxis dataKey="name" tick={{ fill: 'var(--text-secondary)' }} />
+                <YAxis tickFormatter={(v) => `R$ ${v/1000}k`} tick={{ fill: 'var(--text-secondary)' }} />
+                <Tooltip formatter={(val) => formatCurrency(val)} contentStyle={{ backgroundColor: 'var(--bg-card)', borderColor: 'rgba(0,0,0,0.1)', borderRadius: '8px' }} />
+                <Legend />
+                <Bar dataKey="receitas" name="Receitas" fill="var(--accent-green)" radius={[4,4,0,0]} />
+                <Bar dataKey="despesas" name="Despesas" fill="var(--accent-red)" radius={[4,4,0,0]} />
+                <Bar dataKey="lucro" name="Lucro" fill="var(--accent-blue)" radius={[4,4,0,0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+      )}
 
       <h3 style={{ marginBottom: '1rem' }}>Recebimentos por Sócio</h3>
       <div className="grid-3" style={{ marginBottom: '2rem' }}>

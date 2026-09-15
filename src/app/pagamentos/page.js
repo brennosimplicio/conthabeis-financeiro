@@ -53,7 +53,7 @@ export default function PagamentosPage() {
 
   return (
     <div>
-      <MonthPicker onChange={(ano, mes) => setDate({ ano, mes })} />
+      <MonthPicker ano={date.ano} mes={date.mes} onChange={(ano, mes) => setDate({ ano, mes })} />
 
       <div className="flex-between" style={{ marginBottom: '1rem' }}>
         <h2>Controle de Pagamentos (Despesas)</h2>

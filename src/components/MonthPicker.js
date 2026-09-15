@@ -7,36 +7,29 @@ const months = [
   'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
 ];
 
-export default function MonthPicker({ onChange }) {
-  const [date, setDate] = useState(() => {
-    const now = new Date();
-    return { mes: now.getMonth() + 1, ano: now.getFullYear() };
-  });
+export default function MonthPicker({ ano, mes, onChange }) {
+  // If not provided, fallback to current
+  const currentAno = ano || new Date().getFullYear();
+  const currentMes = mes || new Date().getMonth() + 1;
 
   const handlePrev = () => {
-    setDate(prev => {
-      let newMes = prev.mes - 1;
-      let newAno = prev.ano;
-      if (newMes < 1) {
-        newMes = 12;
-        newAno -= 1;
-      }
-      if (onChange) onChange(newAno, newMes);
-      return { mes: newMes, ano: newAno };
-    });
+    let newMes = currentMes - 1;
+    let newAno = currentAno;
+    if (newMes < 1) {
+      newMes = 12;
+      newAno -= 1;
+    }
+    if (onChange) onChange(newAno, newMes);
   };
 
   const handleNext = () => {
-    setDate(prev => {
-      let newMes = prev.mes + 1;
-      let newAno = prev.ano;
-      if (newMes > 12) {
-        newMes = 1;
-        newAno += 1;
-      }
-      if (onChange) onChange(newAno, newMes);
-      return { mes: newMes, ano: newAno };
-    });
+    let newMes = currentMes + 1;
+    let newAno = currentAno;
+    if (newMes > 12) {
+      newMes = 1;
+      newAno += 1;
+    }
+    if (onChange) onChange(newAno, newMes);
   };
 
   return (
@@ -45,7 +38,7 @@ export default function MonthPicker({ onChange }) {
         <ChevronLeft size={24} />
       </button>
       <h2 style={{ minWidth: '200px', textAlign: 'center', margin: 0 }}>
-        {months[date.mes - 1]} {date.ano}
+        {months[currentMes - 1]} {currentAno}
       </h2>
       <button className="btn btn-ghost" onClick={handleNext}>
         <ChevronRight size={24} />

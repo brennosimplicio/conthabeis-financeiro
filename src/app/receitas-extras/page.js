@@ -88,7 +88,7 @@ export default function ReceitasExtrasPage() {
 
   return (
     <div>
-      <MonthPicker onChange={(ano, mes) => setDate({ ano, mes })} />
+      <MonthPicker ano={date.ano} mes={date.mes} onChange={(ano, mes) => setDate({ ano, mes })} />
 
       <div className="flex-between" style={{ marginBottom: '2rem' }}>
         <h2>Receitas Extras</h2>
