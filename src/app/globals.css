@@ -363,4 +363,4 @@ p { color: var(--text-secondary); }
   h2 { font-size: 1.25rem; }
 }
 
-@media (min-width: 769px) { .md\\:hidden { display: none !important; } }
+@media (min-width: 769px) { .md\:hidden { display: none !important; } }

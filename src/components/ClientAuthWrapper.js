@@ -27,24 +27,16 @@ export default function ClientAuthWrapper({ children }) {
     return () => subscription.unsubscribe();
   }, [supabase]);
 
-  const [isSignUp, setIsSignUp] = useState(false);
-
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoggingIn(true);
     try {
-      let result;
-      if (isSignUp) {
-        result = await supabase.auth.signUp({ email, password });
-      } else {
-        result = await supabase.auth.signInWithPassword({ email, password });
-      }
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
       
-      if (result.error) {
-        showToast(result.error.message, 'error');
+      if (error) {
+        showToast(error.message, 'error');
       } else {
-        showToast(isSignUp ? 'Conta criada! Verifique o e-mail ou faça login.' : 'Login realizado com sucesso!');
-        if (isSignUp) setIsSignUp(false);
+        showToast('Login realizado com sucesso!');
       }
     } catch (err) {
       showToast('Erro interno', 'error');
@@ -86,14 +78,10 @@ export default function ClientAuthWrapper({ children }) {
                 onChange={e => setPassword(e.target.value)} 
                 required 
                 placeholder="******"
-                minLength={6}
               />
             </div>
             <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', marginTop: '1rem' }} disabled={loggingIn}>
-              {loggingIn ? 'Aguarde...' : <><LogIn size={18} /> {isSignUp ? 'Criar Conta' : 'Entrar'}</>}
-            </button>
-            <button type="button" className="btn btn-ghost" style={{ width: '100%', justifyContent: 'center' }} onClick={() => setIsSignUp(!isSignUp)}>
-              {isSignUp ? 'Já tenho uma conta (Fazer Login)' : 'Criar nova conta'}
+              {loggingIn ? 'Aguarde...' : <><LogIn size={18} /> Entrar</>}
             </button>
           </form>
         </div>
