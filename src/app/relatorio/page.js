@@ -126,7 +126,23 @@ export default function RelatorioPage() {
   const copyToClipboard = async () => {
     const text = generateText();
     try {
-      await navigator.clipboard.writeText(text);
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.style.position = "absolute";
+        textArea.style.left = "-999999px";
+        document.body.prepend(textArea);
+        textArea.select();
+        try {
+          document.execCommand('copy');
+        } catch (error) {
+          throw new Error("Failed to copy");
+        } finally {
+          textArea.remove();
+        }
+      }
       setCopied(true);
       showToast('Relatório copiado para a área de transferência!');
       setTimeout(() => setCopied(false), 2000);

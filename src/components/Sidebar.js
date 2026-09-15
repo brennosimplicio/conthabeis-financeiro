@@ -44,7 +44,7 @@ export default function Sidebar() {
       <div className={`sidebar ${isOpen ? 'open' : ''}`}>
         <div className="sidebar-header flex-between">
           <div className="flex items-center gap-2" style={{ display: 'flex', alignItems: 'center' }}>
-            <img src="/logo.png" alt="ContHabeis Logo" style={{ maxHeight: '40px', maxWidth: '100%' }} />
+            <img src="/logo.png" alt="ContHabeis Logo" style={{ maxHeight: '50px', maxWidth: '100%' }} />
           </div>
           <button className="btn btn-ghost md:hidden" onClick={() => setIsOpen(false)} style={{ display: 'none' }}>
             <X size={20} />
