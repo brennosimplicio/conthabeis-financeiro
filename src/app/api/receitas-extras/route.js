@@ -11,12 +11,19 @@ export async function GET(request) {
     const supabase = getDb();
     const { data: receitas, error } = await supabase
       .from('receitas_extras')
-      .select('*')
+      .select('*, socios(nome)')
       .eq('ano', ano)
       .eq('mes', mes);
       
     if (error) throw error;
-    return NextResponse.json(receitas);
+    
+    const result = (receitas || []).map(r => ({
+      ...r,
+      socio_nome: r.socios?.nome || 'Sem sócio',
+      socios: undefined
+    }));
+    
+    return NextResponse.json(result);
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

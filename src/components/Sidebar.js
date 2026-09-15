@@ -11,7 +11,8 @@ import {
   PlusCircle,
   Menu,
   X,
-  Wallet
+  Wallet,
+  FileText
 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -26,6 +27,7 @@ export default function Sidebar() {
     { label: 'Despesas', icon: Receipt, href: '/despesas' },
     { label: 'Recebimentos', icon: ArrowDownCircle, href: '/recebimentos' },
     { label: 'Pagamentos', icon: ArrowUpCircle, href: '/pagamentos' },
+    { label: 'Relatório', icon: FileText, href: '/relatorio' },
     { label: 'Receitas Extras', icon: PlusCircle, href: '/receitas-extras' },
   ];
 

@@ -12,7 +12,7 @@ export async function GET(request) {
     
     let { data: pagamentos, error } = await supabase
       .from('pagamentos_mensais')
-      .select('*')
+      .select('*, despesas(nome, categoria)')
       .eq('ano', ano)
       .eq('mes', mes);
       
@@ -22,7 +22,7 @@ export async function GET(request) {
       // Auto-generate
       const { data: despesas, error: despesasError } = await supabase
         .from('despesas')
-        .select('id, valor')
+        .select('id, nome, categoria, valor')
         .eq('ativa', 1);
         
       if (despesasError) throw despesasError;
@@ -40,14 +40,22 @@ export async function GET(request) {
         const { data: inserted, error: insertError } = await supabase
           .from('pagamentos_mensais')
           .insert(newPagamentos)
-          .select();
+          .select('*, despesas(nome, categoria)');
           
         if (insertError) throw insertError;
         pagamentos = inserted;
       }
     }
 
-    return NextResponse.json(pagamentos || []);
+    // Flatten the nested despesas object into despesa_nome and categoria
+    const result = (pagamentos || []).map(p => ({
+      ...p,
+      despesa_nome: p.despesas?.nome || 'Sem nome',
+      categoria: p.despesas?.categoria || 'Outros',
+      despesas: undefined
+    }));
+
+    return NextResponse.json(result);
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

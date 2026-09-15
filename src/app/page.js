@@ -80,10 +80,10 @@ export default function DashboardPage() {
             </div>
             <div className="flex-between" style={{ marginBottom: '1rem' }}>
               <span style={{ color: 'var(--text-secondary)' }}>Pendente</span>
-              <span style={{ color: 'var(--accent-amber)', fontWeight: 600 }}>{formatCurrency(s.pendente)}</span>
+              <span style={{ color: 'var(--accent-amber)', fontWeight: 600 }}>{formatCurrency(s.a_receber || s.pendente || 0)}</span>
             </div>
             <div style={{ width: '100%', height: '6px', background: 'var(--bg-darkest)', borderRadius: '3px', overflow: 'hidden' }}>
-              <div style={{ width: `${(s.recebido / (s.recebido + s.pendente)) * 100}%`, height: '100%', background: 'var(--accent-blue)' }}></div>
+              <div style={{ width: `${(s.recebido + (s.a_receber || s.pendente || 0)) > 0 ? (s.recebido / (s.recebido + (s.a_receber || s.pendente || 0))) * 100 : 0}%`, height: '100%', background: 'var(--accent-blue)' }}></div>
             </div>
           </div>
         ))}
