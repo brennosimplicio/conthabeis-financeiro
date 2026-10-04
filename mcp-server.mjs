@@ -159,7 +159,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       const res = await fetch(`${API_URL}/api/clientes`);
       if (!res.ok) throw new Error("Erro ao buscar clientes da API");
       const data = await res.json();
-      return { toolResult: { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] } };
+      return { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] };
     }
     
     if (name === "alterar_cliente") {
@@ -169,7 +169,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         body: JSON.stringify(args)
       });
       if (!res.ok) throw new Error("Erro ao atualizar cliente via API");
-      return { toolResult: { content: [{ type: "text", text: "Cliente atualizado com sucesso respeitando regras de negócio." }] } };
+      return { content: [{ type: "text", text: "Cliente atualizado com sucesso respeitando regras de negócio." }] };
     }
 
     // --- DESPESAS ---
@@ -177,17 +177,16 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       const res = await fetch(`${API_URL}/api/despesas`);
       if (!res.ok) throw new Error("Erro ao buscar despesas");
       const data = await res.json();
-      return { toolResult: { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] } };
+      return { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] };
     }
 
     // --- RECEBIMENTOS ---
     if (name === "get_recebimentos") {
       const { ano, mes } = args;
-      // Chamando a API oficial que gera os splits faltantes automaticamente!
       const res = await fetch(`${API_URL}/api/recebimentos?ano=${ano}&mes=${mes}`);
       if (!res.ok) throw new Error("Erro ao gerar/buscar recebimentos");
       const data = await res.json();
-      return { toolResult: { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] } };
+      return { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] };
     }
     
     if (name === "registrar_recebimento") {
@@ -203,7 +202,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         })
       });
       if (!res.ok) throw new Error("Erro ao registrar recebimento via API");
-      return { toolResult: { content: [{ type: "text", text: "Recebimento registrado com sucesso e validado pela API!" }] } };
+      return { content: [{ type: "text", text: "Recebimento registrado com sucesso e validado pela API!" }] };
     }
 
     // --- PAGAMENTOS ---
@@ -212,7 +211,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       const res = await fetch(`${API_URL}/api/pagamentos?ano=${ano}&mes=${mes}`);
       if (!res.ok) throw new Error("Erro ao gerar/buscar pagamentos");
       const data = await res.json();
-      return { toolResult: { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] } };
+      return { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] };
     }
     
     if (name === "registrar_pagamento") {
@@ -228,7 +227,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         })
       });
       if (!res.ok) throw new Error("Erro ao registrar pagamento via API");
-      return { toolResult: { content: [{ type: "text", text: "Pagamento registrado com sucesso e validado pela API!" }] } };
+      return { content: [{ type: "text", text: "Pagamento registrado com sucesso e validado pela API!" }] };
     }
 
     // --- RECEITAS EXTRAS ---
@@ -237,7 +236,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       const res = await fetch(`${API_URL}/api/receitas-extras?ano=${ano}&mes=${mes}`);
       if (!res.ok) throw new Error("Erro ao buscar receitas extras");
       const data = await res.json();
-      return { toolResult: { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] } };
+      return { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] };
     }
 
     if (name === "criar_receita_extra") {
@@ -247,7 +246,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         body: JSON.stringify(args)
       });
       if (!res.ok) throw new Error("Erro ao registrar receita extra via API");
-      return { toolResult: { content: [{ type: "text", text: "Receita extra cadastrada com sucesso!" }] } };
+      return { content: [{ type: "text", text: "Receita extra cadastrada com sucesso!" }] };
     }
 
     // --- RELATORIO MENSAL ---
@@ -267,12 +266,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 `Receitas Extras (Avulsas): R$ ${dash.receitas_extras_total?.toFixed(2)}\n\n` +
 `Resultado Financeiro da ContHabeis (Caixa): R$ ${dash.conthabeis?.resultado?.toFixed(2)}\n`;
 
-      return { toolResult: { content: [{ type: "text", text: report }] } };
+      return { content: [{ type: "text", text: report }] };
     }
 
     throw new Error("Ferramenta não encontrada.");
   } catch (error) {
-    return { toolResult: { content: [{ type: "text", text: `Erro: ${error.message}` }], isError: true } };
+    return { content: [{ type: "text", text: `Erro: ${error.message}` }], isError: true };
   }
 });
 
