@@ -276,6 +276,36 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   }
 });
 
-const transport = new StdioServerTransport();
-await server.connect(transport);
-console.error("ContHabeis MCP Server (Admin Edition) running on stdio");
+import express from "express";
+import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
+import cors from "cors";
+
+if (process.argv.includes("--stdio")) {
+  const transport = new StdioServerTransport();
+  await server.connect(transport);
+  console.error("ContHabeis MCP Server running on stdio");
+} else {
+  const app = express();
+  app.use(cors());
+  
+  let sseTransport;
+  
+  app.get("/sse", async (req, res) => {
+    sseTransport = new SSEServerTransport("/messages", res);
+    await server.connect(sseTransport);
+    console.log("Client connected via SSE");
+  });
+  
+  app.post("/messages", express.json(), async (req, res) => {
+    if (sseTransport) {
+      await sseTransport.handlePostMessage(req, res);
+    } else {
+      res.status(503).send("No active SSE connection");
+    }
+  });
+
+  const PORT = process.env.PORT || 3333;
+  app.listen(PORT, () => {
+    console.log(`ContHabeis MCP Server (Admin Edition) running on HTTP SSE at http://localhost:${PORT}/sse`);
+  });
+}
