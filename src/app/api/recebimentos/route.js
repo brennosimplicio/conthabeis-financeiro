@@ -18,19 +18,35 @@ export async function GET(request) {
       
     if (error) throw error;
 
-    if (!recebimentos || recebimentos.length === 0) {
-      // Auto-generate
-      const { data: clientes, error: clientesError } = await supabase
-        .from('clientes')
-        .select('id, nome, splits:split_socios(socio_id, valor)')
-        .eq('ativo', 1);
-        
-      if (clientesError) throw clientesError;
+    // Fetch active clients and their splits
+    const { data: clientes, error: clientesError } = await supabase
+      .from('clientes')
+      .select('id, nome, splits:split_socios(socio_id, valor)')
+      .eq('ativo', 1);
+      
+    if (clientesError) throw clientesError;
 
-      const newRecebimentos = [];
-      for (const cliente of clientes) {
-        if (cliente.splits) {
-          for (const split of cliente.splits) {
+    const newRecebimentos = [];
+    const updates = [];
+    
+    // Create a lookup for existing recebimentos
+    // Key: cliente_id + '_' + socio_id
+    const existingMap = {};
+    if (recebimentos) {
+      for (const rec of recebimentos) {
+        existingMap[`${rec.cliente_id}_${rec.socio_id}`] = rec;
+      }
+    }
+
+    // Check against active clients
+    for (const cliente of (clientes || [])) {
+      if (cliente.splits) {
+        for (const split of cliente.splits) {
+          const key = `${cliente.id}_${split.socio_id}`;
+          const existing = existingMap[key];
+          
+          if (!existing) {
+            // Missing record -> generate it
             newRecebimentos.push({
               cliente_id: cliente.id,
               socio_id: split.socio_id,
@@ -40,18 +56,43 @@ export async function GET(request) {
               valor_recebido: 0,
               recebido: 0
             });
+          } else {
+            // Record exists. If unpaid and expected value changed, queue an update.
+            if (existing.recebido === 0 && existing.valor_esperado !== split.valor) {
+              updates.push({
+                id: existing.id,
+                valor_esperado: split.valor
+              });
+              // Update local object immediately so the GET response is accurate
+              existing.valor_esperado = split.valor;
+            }
           }
         }
       }
+    }
 
-      if (newRecebimentos.length > 0) {
-        const { data: inserted, error: insertError } = await supabase
+    // Insert new missing records
+    if (newRecebimentos.length > 0) {
+      const { data: inserted, error: insertError } = await supabase
+        .from('recebimentos_mensais')
+        .insert(newRecebimentos)
+        .select('*, clientes(nome)');
+      
+      if (insertError) throw insertError;
+      if (!recebimentos) recebimentos = [];
+      recebimentos = [...recebimentos, ...inserted];
+    }
+    
+    // Apply updates asynchronously to avoid blocking the response unnecessarily long,
+    // or just await them. We'll await them to be safe.
+    if (updates.length > 0) {
+      // Supabase JS doesn't support bulk update with different values easily, 
+      // but upsert works if we provide all required fields, OR we just map over them.
+      for (const update of updates) {
+        await supabase
           .from('recebimentos_mensais')
-          .insert(newRecebimentos)
-          .select('*, clientes(nome)');
-        
-        if (insertError) throw insertError;
-        recebimentos = inserted;
+          .update({ valor_esperado: update.valor_esperado })
+          .eq('id', update.id);
       }
     }
 

@@ -18,32 +18,66 @@ export async function GET(request) {
       
     if (error) throw error;
 
-    if (!pagamentos || pagamentos.length === 0) {
-      // Auto-generate
-      const { data: despesas, error: despesasError } = await supabase
-        .from('despesas')
-        .select('id, nome, categoria, valor')
-        .eq('ativa', 1);
+    // Fetch active despesas
+    const { data: despesas, error: despesasError } = await supabase
+      .from('despesas')
+      .select('id, nome, categoria, valor')
+      .eq('ativa', 1);
+      
+    if (despesasError) throw despesasError;
+
+    const newPagamentos = [];
+    const updates = [];
+    
+    const existingMap = {};
+    if (pagamentos) {
+      for (const p of pagamentos) {
+        existingMap[p.despesa_id] = p;
+      }
+    }
+
+    // Check against active despesas
+    for (const despesa of (despesas || [])) {
+      const existing = existingMap[despesa.id];
+      const val = despesa.valor || 0;
+      
+      if (!existing) {
+        newPagamentos.push({
+          despesa_id: despesa.id,
+          ano,
+          mes,
+          valor_esperado: val,
+          valor_pago: 0,
+          pago: 0
+        });
+      } else {
+        if (existing.pago === 0 && existing.valor_esperado !== val) {
+          updates.push({
+            id: existing.id,
+            valor_esperado: val
+          });
+          existing.valor_esperado = val;
+        }
+      }
+    }
+
+    if (newPagamentos.length > 0) {
+      const { data: inserted, error: insertError } = await supabase
+        .from('pagamentos_mensais')
+        .insert(newPagamentos)
+        .select('*, despesas(nome, categoria)');
         
-      if (despesasError) throw despesasError;
-
-      const newPagamentos = despesas.map(d => ({
-        despesa_id: d.id,
-        ano,
-        mes,
-        valor_esperado: d.valor || 0,
-        valor_pago: 0,
-        pago: 0
-      }));
-
-      if (newPagamentos.length > 0) {
-        const { data: inserted, error: insertError } = await supabase
+      if (insertError) throw insertError;
+      if (!pagamentos) pagamentos = [];
+      pagamentos = [...pagamentos, ...inserted];
+    }
+    
+    if (updates.length > 0) {
+      for (const update of updates) {
+        await supabase
           .from('pagamentos_mensais')
-          .insert(newPagamentos)
-          .select('*, despesas(nome, categoria)');
-          
-        if (insertError) throw insertError;
-        pagamentos = inserted;
+          .update({ valor_esperado: update.valor_esperado })
+          .eq('id', update.id);
       }
     }
 
