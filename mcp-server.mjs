@@ -148,77 +148,105 @@ const tools = [
 
 server.setRequestHandler(ListToolsRequestSchema, async () => ({ tools }));
 
+const API_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   try {
     const { name, arguments: args } = request.params;
     
     // --- CLIENTES ---
     if (name === "get_clientes") {
-      const { data, error } = await supabase.from('clientes').select('*').eq('ativo', 1);
-      if (error) throw error;
+      const res = await fetch(`${API_URL}/api/clientes`);
+      if (!res.ok) throw new Error("Erro ao buscar clientes da API");
+      const data = await res.json();
       return { toolResult: { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] } };
     }
     
     if (name === "alterar_cliente") {
-      const { id, nome, faturamento, dia_vencimento } = args;
-      const updates = { atualizado_em: new Date().toISOString() };
-      if (nome !== undefined) updates.nome = nome;
-      if (faturamento !== undefined) updates.faturamento = faturamento;
-      if (dia_vencimento !== undefined) updates.dia_vencimento = dia_vencimento;
-      const { error } = await supabase.from('clientes').update(updates).eq('id', id);
-      if (error) throw error;
-      return { toolResult: { content: [{ type: "text", text: "Cliente atualizado com sucesso no banco de dados." }] } };
+      const res = await fetch(`${API_URL}/api/clientes`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(args)
+      });
+      if (!res.ok) throw new Error("Erro ao atualizar cliente via API");
+      return { toolResult: { content: [{ type: "text", text: "Cliente atualizado com sucesso respeitando regras de negócio." }] } };
     }
 
     // --- DESPESAS ---
     if (name === "get_despesas") {
-      const { data, error } = await supabase.from('despesas').select('*').eq('ativa', 1);
-      if (error) throw error;
+      const res = await fetch(`${API_URL}/api/despesas`);
+      if (!res.ok) throw new Error("Erro ao buscar despesas");
+      const data = await res.json();
       return { toolResult: { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] } };
     }
 
     // --- RECEBIMENTOS ---
     if (name === "get_recebimentos") {
       const { ano, mes } = args;
-      const { data, error } = await supabase.from('recebimentos_mensais').select('*, clientes(nome)').eq('ano', ano).eq('mes', mes);
-      if (error) throw error;
+      // Chamando a API oficial que gera os splits faltantes automaticamente!
+      const res = await fetch(`${API_URL}/api/recebimentos?ano=${ano}&mes=${mes}`);
+      if (!res.ok) throw new Error("Erro ao gerar/buscar recebimentos");
+      const data = await res.json();
       return { toolResult: { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] } };
     }
     
     if (name === "registrar_recebimento") {
       const { recebimento_id, valor_recebido } = args;
-      const { error } = await supabase.from('recebimentos_mensais').update({ recebido: 1, valor_recebido, data_recebimento: new Date().toISOString() }).eq('id', recebimento_id);
-      if (error) throw error;
-      return { toolResult: { content: [{ type: "text", text: "Recebimento registrado com sucesso!" }] } };
+      const res = await fetch(`${API_URL}/api/recebimentos`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: recebimento_id,
+          recebido: 1,
+          valor_recebido,
+          data_recebimento: new Date().toISOString()
+        })
+      });
+      if (!res.ok) throw new Error("Erro ao registrar recebimento via API");
+      return { toolResult: { content: [{ type: "text", text: "Recebimento registrado com sucesso e validado pela API!" }] } };
     }
 
     // --- PAGAMENTOS ---
     if (name === "get_pagamentos") {
       const { ano, mes } = args;
-      const { data, error } = await supabase.from('pagamentos_mensais').select('*, despesas(nome, categoria)').eq('ano', ano).eq('mes', mes);
-      if (error) throw error;
+      const res = await fetch(`${API_URL}/api/pagamentos?ano=${ano}&mes=${mes}`);
+      if (!res.ok) throw new Error("Erro ao gerar/buscar pagamentos");
+      const data = await res.json();
       return { toolResult: { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] } };
     }
     
     if (name === "registrar_pagamento") {
       const { pagamento_id, valor_pago } = args;
-      const { error } = await supabase.from('pagamentos_mensais').update({ pago: 1, valor_pago, data_pagamento: new Date().toISOString() }).eq('id', pagamento_id);
-      if (error) throw error;
-      return { toolResult: { content: [{ type: "text", text: "Pagamento registrado com sucesso!" }] } };
+      const res = await fetch(`${API_URL}/api/pagamentos`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: pagamento_id,
+          pago: 1,
+          valor_pago,
+          data_pagamento: new Date().toISOString()
+        })
+      });
+      if (!res.ok) throw new Error("Erro ao registrar pagamento via API");
+      return { toolResult: { content: [{ type: "text", text: "Pagamento registrado com sucesso e validado pela API!" }] } };
     }
 
     // --- RECEITAS EXTRAS ---
     if (name === "get_receitas_extras") {
       const { ano, mes } = args;
-      const { data, error } = await supabase.from('receitas_extras').select('*').eq('ano', ano).eq('mes', mes);
-      if (error) throw error;
+      const res = await fetch(`${API_URL}/api/receitas-extras?ano=${ano}&mes=${mes}`);
+      if (!res.ok) throw new Error("Erro ao buscar receitas extras");
+      const data = await res.json();
       return { toolResult: { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] } };
     }
 
     if (name === "criar_receita_extra") {
-      const { descricao, valor, ano, mes, socio_id } = args;
-      const { error } = await supabase.from('receitas_extras').insert([{ descricao, valor, ano, mes, socio_id }]);
-      if (error) throw error;
+      const res = await fetch(`${API_URL}/api/receitas-extras`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(args)
+      });
+      if (!res.ok) throw new Error("Erro ao registrar receita extra via API");
       return { toolResult: { content: [{ type: "text", text: "Receita extra cadastrada com sucesso!" }] } };
     }
 
@@ -226,25 +254,19 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     if (name === "gerar_relatorio_mensal") {
       const { ano, mes } = args;
       
-      const { data: recs } = await supabase.from('recebimentos_mensais').select('*').eq('ano', ano).eq('mes', mes);
-      const { data: pags } = await supabase.from('pagamentos_mensais').select('*').eq('ano', ano).eq('mes', mes);
-      const { data: extras } = await supabase.from('receitas_extras').select('*').eq('ano', ano).eq('mes', mes);
+      const dashboardRes = await fetch(`${API_URL}/api/dashboard?ano=${ano}&mes=${mes}`);
+      if (!dashboardRes.ok) throw new Error("Erro ao processar relatório pelo Dashboard");
+      const dash = await dashboardRes.json();
       
-      const totalEsperadoRec = (recs || []).reduce((sum, r) => sum + r.valor_esperado, 0);
-      const totalRecebido = (recs || []).filter(r => r.recebido === 1).reduce((sum, r) => sum + r.valor_recebido, 0);
-      
-      const totalEsperadoPag = (pags || []).reduce((sum, p) => sum + p.valor_esperado, 0);
-      const totalPago = (pags || []).filter(p => p.pago === 1).reduce((sum, p) => sum + p.valor_pago, 0);
-      
-      const totalExtras = (extras || []).reduce((sum, e) => sum + e.valor, 0);
-      
-      const report = `Relatório de ${mes}/${ano}\n\n` +
-`Recebimentos Esperados: R$ ${totalEsperadoRec.toFixed(2)}\n` +
-`Total Já Recebido: R$ ${totalRecebido.toFixed(2)}\n\n` +
-`Pagamentos de Despesas Esperados: R$ ${totalEsperadoPag.toFixed(2)}\n` +
-`Total Já Pago: R$ ${totalPago.toFixed(2)}\n\n` +
-`Receitas Extras (Entradas isoladas): R$ ${totalExtras.toFixed(2)}\n\n` +
-`Saldo Atual (Recebido + Extras - Pago): R$ ${(totalRecebido + totalExtras - totalPago).toFixed(2)}\n`;
+      const report = `Relatório Oficial de ${mes}/${ano}\n\n` +
+`Faturamento Total Ativo: R$ ${dash.faturamento_total?.toFixed(2)}\n` +
+`Total Já Recebido dos Clientes: R$ ${dash.total_recebido?.toFixed(2)}\n` +
+`Total Pendente a Receber: R$ ${dash.total_a_receber?.toFixed(2)}\n\n` +
+`Despesas Fixas Esperadas: R$ ${dash.conthabeis?.despesas_total?.toFixed(2)}\n` +
+`Despesas Já Pagas: R$ ${dash.conthabeis?.despesas_pagas?.toFixed(2)}\n\n` +
+`Receitas Extras (Avulsas): R$ ${dash.receitas_extras_total?.toFixed(2)}\n\n` +
+`Resultado Financeiro da ContHabeis (Caixa): R$ ${dash.conthabeis?.resultado?.toFixed(2)}\n`;
+
       return { toolResult: { content: [{ type: "text", text: report }] } };
     }
 
