@@ -296,9 +296,14 @@ if (process.argv.includes("--stdio")) {
     console.log("Client connected via SSE");
   });
   
-  app.post("/messages", express.json(), async (req, res) => {
+  app.post("/messages", async (req, res) => {
     if (sseTransport) {
-      await sseTransport.handlePostMessage(req, res);
+      try {
+        await sseTransport.handlePostMessage(req, res);
+      } catch (err) {
+        console.error("Error handling post message:", err);
+        res.status(500).send("Error");
+      }
     } else {
       res.status(503).send("No active SSE connection");
     }
