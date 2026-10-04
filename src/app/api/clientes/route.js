@@ -40,10 +40,22 @@ export async function POST(request) {
     const resultId = cliente.id;
     
     // Insert splits
-    if (splits && Array.isArray(splits) && splits.length > 0) {
-      const splitsData = splits.map(s => ({ cliente_id: resultId, socio_id: s.socio_id, valor: s.valor || 0 }));
-      const { error: splitError } = await supabase.from('split_socios').insert(splitsData);
-      if (splitError) throw splitError;
+    if (splits && Array.isArray(splits)) {
+      let splitsData = splits.map(s => ({ cliente_id: resultId, socio_id: s.socio_id, valor: s.valor || 0 }));
+      
+      // Auto-calculate company remainder
+      const sumSplits = splitsData.reduce((acc, curr) => acc + curr.valor, 0);
+      const { data: empSocio } = await supabase.from('socios').select('id').eq('is_empresa', 1).single();
+      
+      const fatur = faturamento || 0;
+      if (empSocio && sumSplits < fatur) {
+        splitsData.push({ cliente_id: resultId, socio_id: empSocio.id, valor: fatur - sumSplits });
+      }
+
+      if (splitsData.length > 0) {
+        const { error: splitError } = await supabase.from('split_socios').insert(splitsData);
+        if (splitError) throw splitError;
+      }
     }
     
     // Insert campos
@@ -82,8 +94,18 @@ export async function PUT(request) {
     // Update splits: delete old, insert new
     if (splits && Array.isArray(splits)) {
       await supabase.from('split_socios').delete().eq('cliente_id', id);
-      if (splits.length > 0) {
-        const splitsData = splits.map(s => ({ cliente_id: id, socio_id: s.socio_id, valor: s.valor || 0 }));
+      
+      let splitsData = splits.map(s => ({ cliente_id: id, socio_id: s.socio_id, valor: s.valor || 0 }));
+      
+      const sumSplits = splitsData.reduce((acc, curr) => acc + curr.valor, 0);
+      const { data: empSocio } = await supabase.from('socios').select('id').eq('is_empresa', 1).single();
+      
+      const fatur = faturamento !== undefined ? faturamento : (await supabase.from('clientes').select('faturamento').eq('id', id).single()).data?.faturamento || 0;
+      if (empSocio && sumSplits < fatur) {
+        splitsData.push({ cliente_id: id, socio_id: empSocio.id, valor: fatur - sumSplits });
+      }
+
+      if (splitsData.length > 0) {
         await supabase.from('split_socios').insert(splitsData);
       }
     }
